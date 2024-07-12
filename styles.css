@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppin",sans-serif;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background:linear-gradient(35deg, black,rgb(109, 0, 109)) ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.stop_watch{
+    min-width: 350px;
+    padding: 1rem 2rem;
+    background: white;
+    border-radius:5px ;
+    text-align: center;
+}
+h2{
+    margin-top: 2rem;
+    font-size: 3rem;
+}
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+.buttons i{
+    font-size: 1.5rem;
+    border-radius: 50%;
+    padding: .4rem;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.buttons .play{
+    font-size: 3.5rem;
+    background-color: rgb(131, 0, 163);
+    padding-left: 10px;
+    border: none;
+    color: white;
+}
+.buttons .revision{
+    font-size: 1.35rem;
+    padding: .4rem;
+}

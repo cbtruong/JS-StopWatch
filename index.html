@@ -1,16 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bear CSS Art</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="cloud">
-        <div class="text">a</div>
-      </div>
-    </div>
-    <script src="script.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stop Watch</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+            rel='stylesheet'>
+    </head>
+    <body>
+        <div class="stop_watch">
+            <h2 id="displayTime">00 : 00 : 00</h2>
+            <div class="buttons">
+                <i onclick={stopWatch()} id="stop" class='bx bx-stop'></i>
+                <i onclick={startWatch()} id="play" class='bx bx-play'></i>
+                <i onclick={resetWatch()} id="revision" class='bx bx-revision'></i>
+            </div>
+        </div>
+        <script>
+        let [seconds,minutes,hours]=[0,0,0];
+        let time=null;
+        let displayTime=document.getElementById("displayTime");
+        let btnStop=document.getElementById("stop");
+        let btnPlay=document.getElementById("play");
+        let btnRevision=document.getElementById("revision");
+        function stopwatch()
+        {
+            seconds++;
+            if (seconds===60)
+                {
+                    seconds=0;
+                    minutes++;
+                    if (minutes===60)
+                        {
+                            hours++;
+                        }
+                }
+                displayTime.innerHTML=(hours<10 ? "0"+hours : hours)
+                            + " : "+ (minutes<10 ? "0"+minutes : minutes) 
+                            + " : "+ (seconds<10 ? "0"+seconds : seconds);
+        }
+        function startWatch()
+        {
+            if (time !== null)
+            {
+                clearInterval(time)
+            }
+            time=setInterval(stopwatch,1000);
+            btnStop.classList.remove("play");
+            btnPlay.classList.remove("play");
+            btnRevision.classList.remove("play");
+            btnPlay.classList.add("play");
+        }
+        function stopWatch()
+        {
+            clearInterval(time);
+            btnStop.classList.remove("play");
+            btnPlay.classList.remove("play");
+            btnRevision.classList.remove("play");
+            btnStop.classList.add("play");
+        }
+        function resetWatch()
+        {
+            btnStop.classList.remove("play");
+            btnPlay.classList.remove("play");
+            btnRevision.classList.remove("play");
+            btnRevision.classList.add("play");
+            clearInterval(time);
+            [seconds,minutes,hours]=[0,0,0];
+            displayTime.innerHTML=(hours<10 ? "0"+hours : hours)
+                            + " : "+ (minutes<10 ? "0"+minutes : minutes) 
+                            + " : "+ (seconds<10 ? "0"+seconds : seconds);
+
+        }
+        
+    </script>
+    </body>
 </html>
